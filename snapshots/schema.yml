@@ -1,0 +1,17 @@
+snapshots:
+  - name: REGION_DIM
+    relation: source('raw', 'region')
+    config:
+      hard_deletes: invalidate
+      unique_key: R_REGIONKEY
+      strategy: check
+      check_cols:
+        - R_NAME
+        - R_REGIONKEY
+        - R_COMMENT
+      snapshot_meta_column_names:
+        dbt_valid_from: valid_from
+        dbt_valid_to: valid_to
+        dbt_scd_id: scd_id
+        dbt_updated_at: updated_at
+        dbt_is_deleted: is_deleted
