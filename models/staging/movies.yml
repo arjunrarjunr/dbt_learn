@@ -1,0 +1,50 @@
+version: 2
+
+models:
+- name: movies
+  description: "Staging table for movies with basic cleaning"
+  columns:
+  - name: movie_id
+    description: "Primary key for the movie"
+    tests:
+    - not_null
+    - unique
+  - name: title
+    description: "Movie title"
+    tests:
+    - not_null
+  - name: imdb_rating
+    description: "IMDB rating on a 1-10 scale"
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+unit_tests:
+- name: movie_age_calculation
+  description: "Test to ensure movie age calculation is correct"
+  model: movies
+  given:
+  - input: source('raw', 'raw_movies')
+    rows:
+    - movie_id: 1
+      title: "The Matrix"
+      release_year: 1999
+    - movie_id: 2
+      title: "Inception"
+      release_year: 2010
+  expect:
+    rows:
+    - movie_id: 1
+      age: 25
+    - movie_id: 2
+      age: 14
