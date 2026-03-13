@@ -1,0 +1,11 @@
+packages:
+  - name: dbt_utils
+    package: dbt-labs/dbt_utils
+    version: 0.7.1
+  - name: codegen
+    package: dbt-labs/codegen
+    version: 0.4.0
+  - name: snowplow
+    package: dbt-labs/snowplow
+    version: 0.13.0
+sha1_hash: 46b06d39e3c282886af10fd1eada64853bd53910
