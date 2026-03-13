@@ -18,17 +18,18 @@ models:
     tests:
     - not_null
     - accepted_values:
-        values:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-        - 6
-        - 7
-        - 8
-        - 9
-        - 10
+        arguments:
+          values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
 unit_tests:
 - name: movie_age_calculation
   description: "Test to ensure movie age calculation is correct"
